@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Taste my Bubble Tea !</title>
+</head>
+<body>
+    <header>
+        <h1>La boutique du Bubble Tea</h1>
+        <nav class="manu_nav">
+            <ul>
+                <li>Profil</li>
+                <li>S'identifier</li>
+                <li><a href="{% url 'cart' %}">Panier</a></li>
+                <li><a href=""></a>Admin</li>
+            </ul>
+        </nav>    
+    </header>
+    <main>
+        <section id="panier-items">
+            <!-- Liste des articles dans le panier -->
+            <article class="panier-item">
+                <figure>
+                    <a href=""><img src="{{element.picture.url}}" alt=""/></a>
+                <figcaption>
+                    <h2>Nom du produit</h2>
+                    <p>Description du produit</p>
+                    <p>Prix : 5.99 €</p>
+                </figcaption>
+                <button>Supprimer</button>
+                </figure>
+            </article>
+
+            <!-- Répéter cet article pour chaque article dans le panier -->
+        </section>
+    
+        <section id="total">
+            <h2>Total :</h2>
+            <p>Total à payer : <span id="total-amount">X €</span></p>
+            <button>Passer la commande</button>
+        </section>
+    </main>
+    
+
+
+    </main>
+    <footer>
+        <p class="copyright">La boutique du Bubble Tea. Tous droits réservés</p>
+    </footer>
+</body>
+</html>

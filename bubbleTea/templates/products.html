@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Taste my Bubble Tea !</title>
+</head>
+<body>
+    <header>
+        <h1>La boutique du Bubble Tea</h1>
+        <nav class="manu_nav">
+            <ul>
+                <li><a href="{% url 'connection' %}">S'identifier</a></li>
+                <li><a href="{% url 'profil' %}">Profil</a></li>
+                <li><a href="">Panier</a></li>
+                <li><a href="{% url 'adminLogin' %}">Admin</a></li>
+            </ul>
+        </nav>    
+    </header>
+    <main>
+        {% for product in allProducts %}
+        <article>
+            <figuer>
+                {% if product.picture.url == '/bubbleTea/images/None' %}
+                <a href="/products/{{product.id}}"><img src="/bubbleTea/images/bubbletea.jpg" alt=""/></a>
+                {% else %}
+                <a href="/products/{{product.id}}"><img src="{{product.picture.url}}" alt=""/></a>
+                {% endif %}
+            <figcaption>
+                <h2>{{product.identifier}}</h2>
+                <p>{{product.price}} $</p>
+            </figcaption>
+            </figure>
+        </article>
+        {% endfor %}
+    </main>
+    <footer>
+        <p class="copyright">La boutique du Bubble Tea. Tous droits réservés</p>
+    </footer>
+</body>
+</html>

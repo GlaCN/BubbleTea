@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Bubble Tea Paradise</title>
+</head>
+<body class="homepage_body">
+    <main>
+        <div class="container">
+            <div class="header">
+                <div class="content-container">
+                    <h1>La boutique du Bubble Tea</h1>
+                    <img class="logo" src="../bubbleTea/images/giphy-logo.gif" alt="Bubble Tea picture">
+                    <p class="subtitle">Explorez notre sélection de délicieux bubble teas</p>
+                    <a class="homepage-button" href="{% url 'products' %}">Entrez !</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

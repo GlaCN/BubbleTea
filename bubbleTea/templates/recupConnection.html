@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <!-- <h1>Connection</h1> -->
+
+            {% if messages %}
+            <div class="error-messages">
+                {% for message in messages %}
+                <p class="error">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="post" action="{% url 'connection' %}">
+                {% csrf_token %}
+                <h1>Connexion</h1>
+                {{ form.as_p }}    
+                <button type="submit">Connexion</button>
+                <!-- <label for="name">Nom</label>
+                <input type="text" name="name" required>
+                <label for="firstname">Prénom</label>
+                <input type="text" name="firstname" required>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" required>
+                <button type="submit">Se connecter</button> -->
+            </form>
+            <p class="link">Pas encore inscrit ? <a href="{% url 'inscription' %}">S'inscrire</a></p>
+        </div>
+    </div>
+    
+    <style>
+        /* CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: cursive;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(ellipse at top, #e66465, transparent), radial-gradient(ellipse at bottom, #0c9f2e, transparent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 400px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .container .form {
+            padding: 30px;
+        }
+
+        label {
+            padding: 10px 0;
+            color: #e66465;
+            cursor: pointer;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        a {
+            font-size: 16px;
+            color: #009579;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            color: #fff;
+            background: #e66465;
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        button:hover {
+            background: #4a8f5a;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .error {
+            background-color: red;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</body>
+</html>

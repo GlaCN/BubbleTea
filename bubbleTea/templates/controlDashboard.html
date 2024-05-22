@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Taste my Bubble Tea !</title>
+</head>
+<body>
+    <header>
+        <h1>La boutique du Bubble Tea</h1>
+        <nav class="manu_nav">
+            <ul>
+                <li><a href="{% url 'products' %}">Accueil</a></li>
+                <li><a href="">Deconnexion</a></li>
+            </ul>
+        </nav>    
+    </header>
+    <main>
+        {% if admin.is_authenticated %}
+        <h2>Bienvenue {{admin.pseudo}} !</h2>
+        {% endif %}
+        <div class="dashboard_container">
+            <div>
+                <h3>Gestion des produits </h3>
+                    <ul>
+                        <li><a href="{% url 'addProduct' %}">Ajouter un produit</a></li>
+                        <li><a href="{% url 'updateProduct' %}">Selectionner un produit à modifier ou supprimer</a></li>
+                        <form method="post" action="{% url 'controlDashboard' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}   
+                            <button type="submit">Valider</button>
+                        </form>
+
+                        {% comment %} <li><a href="{% url 'deleteProduct' %}">Supprimer un produit</a></li> {% endcomment %}
+                    </ul>
+            </div>
+            <div>
+                <h3>Gestion des utilisateurs</h3>
+                    <ul>
+                        <li><a href="{% url 'allUsers' %}">Afficher tous les utilisateurs</a></li>
+                        <li><a href="">Ajouter un utilisateur</a></li>
+                        <li><a href="">Modifier un utilisateur</a></li>
+                        <li><a href="">Supprimer un utilisateur</a></li>
+                    </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="copyright">La boutique du Bubble Tea. Tous droits réservés</p>
+    </footer>
+</body>
+</html>

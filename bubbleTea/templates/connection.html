@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            {% if messages %}
+            <div class="error-messages">
+                {% for message in messages %}
+                <p class="error">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="post" action="{% url 'connection' %}">
+                {% csrf_token %}
+                <a href="{% url 'products' %}">Retour aux achats</a>
+                <h1>Connexion</h1>
+                {{ form.as_p }}    
+                <button type="submit">Connexion</button>
+            </form>
+            <p class="link">Pas encore inscrit ? <a href="{% url 'inscription' %}">S'inscrire</a></p>
+        </div>
+    </div>
+    <div id="background-wrap">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+        <div class="bubble x10"></div>
+    </div>
+
+</body>
+</html>

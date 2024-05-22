@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <!-- <h1>Connection</h1> -->
+
+            {% if messages %}
+            <div class="error-messages">
+                {% for message in messages %}
+                <p class="error">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="post" action="{% url 'adminLogin' %}">
+                {% csrf_token %}
+                <a href="{% url 'products' %}">Retour aux achats</a>
+                <h1>Connexion Administrateur</h1>
+                {{ form.as_p }}    
+                <button type="submit">Connexion</button>
+                <!-- <label for="name">Nom</label>
+                <input type="text" name="name" required>
+                <label for="firstname">Prénom</label>
+                <input type="text" name="firstname" required>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" required>
+                <button type="submit">Se connecter</button> -->
+            </form>
+            <p class="link">Pas encore inscrit ? <a href="{% url 'adminRegister' %}">S'inscrire</a></p>
+        </div>
+    </div>
+    
+</body>
+</html>
